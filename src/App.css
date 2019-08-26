@@ -18,6 +18,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.ChatImage {
+  height: 10px;
+  width: 10px;
+}
 
 .App-link {
   color: #61dafb;
