@@ -59,7 +59,9 @@ class App extends Component {
     return (
       <div className="App">
         <Widget
-          handleNewUserMessage={this.handleNewUserMessage}
+                handleNewUserMessage={this.handleNewUserMessage}
+                title="Rick"
+                subtitle="Resdec Recommendation Bot"
         />
       </div>
     );
