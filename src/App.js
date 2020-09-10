@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Widget, addResponseMessage, renderCustomComponent } from 'react-chat-widget';
+import { Widget, addResponseMessage, renderCustomComponent, addLinkSnippet } from 'react-chat-widget';
 
 import 'react-chat-widget/lib/styles.css';
 const uuidv4 = require('uuid/v4');
@@ -35,8 +35,21 @@ class App extends Component {
         var json = JSON.parse(body);
         console.log(json);
         json.forEach(entry => {
-          if (entry.text != null){
-            addResponseMessage(entry.text);
+            if (entry.text != null) {
+                if (entry.text.startsWith(">>")) {
+                    var component = entry.text.substring(2);
+                    var plugin = "https://wordpress.org/plugins/" + component;
+                    addLinkSnippet(
+                        {
+                            title: component,
+                            link: plugin,
+                            target: '_blank'
+                        }
+                    );
+                }
+                else {
+                    addResponseMessage(entry.text);
+                }
           }
           if (entry.image != null){
             renderCustomComponent(function Image()
